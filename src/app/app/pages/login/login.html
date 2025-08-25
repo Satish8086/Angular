@@ -1,1 +1,59 @@
-<p>login works!</p>
+<body>
+  <div class="container login-container d-flex justify-content-center align-items-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm">
+        <h3 class="text-center mb-4">Login</h3>
+
+        <!-- Google Login -->
+        <button class="btn google-btn w-100 mb-3" onclick="alert('Google Login Clicked')">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo" />
+          Login with Google
+        </button>
+
+        <div class="text-center mb-3 text-muted">or login with username</div>
+
+        <!-- Login Form -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+              <input type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+          [ngClass]="{'is-invalid': submitted && f['email']['errors']}" />
+          <!-- <div *ngIf="submitted && f['email']['errors']" class="invalid-feedback">
+          <div *ngIf="f['email']?.errors?.'required']">Email is required</div>
+          <div *ngIf="f['email']?.errors?.'email']">Email must be valid</div>
+        </div> -->
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-lock"></i></span>
+              <input type="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+          [ngClass]="{'is-invalid': submitted && f['password']['errors']}"/>
+           <!-- <div *ngIf="submitted && f['password']['errors']" class="invalid-feedback">
+          <div *ngIf="f['password']?.errors?.'required']">Password is required</div>
+        </div> -->
+            </div>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe" />
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Login</button>          
+        </form>
+        <button class="btn btn-primary w-100" (click)="signUp()">Sign Up</button>
+        <div *ngIf="loginSuccess" class="alert alert-success mt-3">
+      Logged in successfully!
+    </div>
+      </div>
+    </div>
+  </div>
+</body>
